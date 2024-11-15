@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick and Morty</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Eater&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h2>Rick and Morty</h2>
+    <div class="search-input">
+      <input type="text" placeholder="Search by name" />
+      <div class="dropdowns">
+      <div class="dropdown">
+        <div class="select">
+            <span class="selected">Human</span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li class="activee">Human</li>
+            <li>Alien</li>
+            <li>Humanoid</li>
+            <li>Unknown</li>
+            <li>PoopyButthole</li>
+            <li>Mythological Creature</li>
+            <li>Animal</li>
+            <li>Robot</li>
+            <li>Disease</li>
+            <li>Cronenberg</li>
+        </ul>
+    </div>
+    <div class="dropdown">
+        <div class="select">
+            <span class="selected">Alive</span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li class="activee">Alive</li>
+            <li>Unknown</li>
+            <li>Dead</li>
+        </ul>
+    </div>
+    <div class="dropdown">
+        <div class="select">
+            <span class="selected">Male</span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li class="activee">Male</li>
+            <li>Female</li>
+            <li>Unknown</li>
+            <li>Genderless</li>
+        </ul>
+    </div>
+    <button id="resetBtn">Reset Filters</button>
+</div>
+    </div>
+
+    <div class="loading-indicator"></div>
+
+    <ul class="character-list"></ul>
+
+<div class="pagination">
+    <ul class="paginationUl">
+    <!-- <button class="page-arrow">prev</button>
+    <button class="numb active">1</button>
+    <button class="dots">...</button>
+    <button class="numb">2</button>
+    <button class="numb">3</button>
+    <button class="numb">4</button>
+    <button class="numb">5</button>
+    <button class="dots">...</button>
+    <button class="numb">42</button>
+    <button class="page-arrow">next</button> -->
+</ul>
+</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
