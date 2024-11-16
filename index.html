@@ -13,51 +13,82 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h2>Rick and Morty</h2>
+    <div class="main-page">
+      <nav>
+        <div class="navbar">
+        <div class="navImg">
+          <img src="logo-image.png" alt="">
+        </div>
+        <div class="navbarBtns">
+          <button id="homeBtn" onclick="home()">Home</button>
+          <button id="characterBtn" onclick="character()">Characters</button>
+        </div>
+      </nav>
+    <div class="main-page-cntnt" style="display: block;" >
+      <div class="front-div">
+        <div class="front-items">
+          <h1 class="front-h2">WELCOME TO THE <span>RICK AND MORTY</span> APP</h2>
+          <h2 class="front-h1">Rick <span>and</span> Morty</h1>
+          <h3 class="front-h3">... Developed by <span>STELLAR STACK!</span></h3>
+        </div>
+      </div>
+    </div>
+      <div class="lastitems">
+        <p class="last-p">MADE WITH L<span>&#x2665;</span>VE  BY SHAHAB</p>
+      </div>
+    
+
+    <div class="home-page" style="display: none;">
+    <h2 class="main-h2" id="stickyText">Rick 'n Morty Characters</h2>
     <div class="search-input">
-      <input type="text" placeholder="Search by name" />
+      <input type="text" placeholder="Character name" />
       <div class="dropdowns">
-      <div class="dropdown">
+        <div class="drpdown-cntnt">
+          <h4>826 Characters</h4>
+        </div>
+        <div class="dropdowns-main">
+        <div class="dropdown">
         <div class="select">
-            <span class="selected">Human</span>
+            <span class="selected">Species</span>
             <div class="caret"></div>
         </div>
-        <ul class="menu">
-            <li class="activee">Human</li>
-            <li>Alien</li>
-            <li>Humanoid</li>
-            <li>Unknown</li>
-            <li>PoopyButthole</li>
-            <li>Mythological Creature</li>
-            <li>Animal</li>
-            <li>Robot</li>
-            <li>Disease</li>
-            <li>Cronenberg</li>
+        <ul class="menu menu1">
+            <li onclick="filter()" data-filter="Human">Human</li>
+            <li onclick="filter()" data-filter="Alien">Alien</li>
+            <li onclick="filter()" data-filter="Humanoid">Humanoid</li>
+            <li onclick="filter()" data-filter="Unknown">Unknown</li>
+            <li onclick="filter()" data-filter="PoopyButthole">PoopyButthole</li>
+            <li onclick="filter()" data-filter="Mythological Creature">Mythological Creature</li>
+            <li onclick="filter()" data-filter="Animal">Animal</li>
+            <li onclick="filter()" data-filter="Robot">Robot</li>
+            <li onclick="filter()" data-filter="Disease">Disease</li>
+            <li onclick="filter()" data-filter="Cronenberg">Cronenberg</li>
         </ul>
     </div>
     <div class="dropdown">
         <div class="select">
-            <span class="selected">Alive</span>
+            <span class="selected">Status</span>
             <div class="caret"></div>
         </div>
-        <ul class="menu">
-            <li class="activee">Alive</li>
-            <li>Unknown</li>
-            <li>Dead</li>
+        <ul class="menu menu2">
+            <li onclick="filter()" data-filter="Alive">Alive</li>
+            <li onclick="filter()" data-filter="Unknown">Unknown</li>
+            <li onclick="filter()" data-filter="Dead">Dead</li>
         </ul>
     </div>
     <div class="dropdown">
         <div class="select">
-            <span class="selected">Male</span>
+            <span class="selected">Gender</span>
             <div class="caret"></div>
         </div>
-        <ul class="menu">
-            <li class="activee">Male</li>
-            <li>Female</li>
-            <li>Unknown</li>
-            <li>Genderless</li>
+        <ul class="menu menu3">
+            <li onclick="filter()" data-filter="Male">Male</li>
+            <li onclick="filter()" data-filter="Female">Female</li>
+            <li onclick="filter()" data-filter="Unknown">Unknown</li>
+            <li  onclick="filter()" data-filter="Genderless">Genderless</li>
         </ul>
     </div>
     <button id="resetBtn">Reset Filters</button>
@@ -67,6 +98,7 @@
     <div class="loading-indicator"></div>
 
     <ul class="character-list"></ul>
+    <!-- <div class="popup"></div> -->
 
 <div class="pagination">
     <ul class="paginationUl">
@@ -82,7 +114,10 @@
     <button class="page-arrow">next</button> -->
 </ul>
 </div>
+</div>
+</div>
 
     <script src="script.js"></script>
   </body>
 </html>
+
