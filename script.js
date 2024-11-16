@@ -35,7 +35,7 @@ const getCharacters = async (page = 1, query = "") => {
         <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
         </div>
-        <div class = "hover-text" style = "display: none;">
+        <div class = "hover-text">
         <h3>${name}</h3>
         <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
@@ -44,7 +44,6 @@ const getCharacters = async (page = 1, query = "") => {
         </div>
       `;
       characterList.appendChild(listItem);
-      listItem.style.backgroundColor = "#d3b8ff";
       listItem.style.color = "#4f545e";
     });
 
