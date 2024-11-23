@@ -24,6 +24,10 @@ const getCharacters = async (page = 1, query = "") => {
 
     characters.forEach(({ image, name, status, species, location, gender }) => {
       const listItem = document.createElement("li");
+        listItem.classList.add("character-item"); 
+      listItem.setAttribute("data-species", species); 
+      listItem.setAttribute("data-status", status);
+      listItem.setAttribute("data-gender", gender); 
       listItem.innerHTML = `
         <div class = "card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
           <img src="${image}" class = "cards-image"></img> 
@@ -46,10 +50,6 @@ const getCharacters = async (page = 1, query = "") => {
       characterList.appendChild(listItem);
       listItem.style.color = "#4f545e";
       listItem.style.backgroundColor = "#85d4ee";
-      listItem.style.overflow = "hidden"
-      listItem.style.position = "relative"
-      listItem.style.transition = 'all ease 1s'
-      listItem.style.height = '400px'
     });
 
    
@@ -60,6 +60,37 @@ const getCharacters = async (page = 1, query = "") => {
     loadingIndicator.style.display = "none";
   }
 };
+const filterCards = (category, value) => {
+  const allCards = document.querySelectorAll(".character-item");
+  allCards.forEach(card => {
+    const cardValue = card.getAttribute(`data-${category}`);
+    if (cardValue === value || value === "All") {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+};
+const dropdownItems = document.querySelectorAll(".dropdown li");
+dropdownItems.forEach(item => {
+  item.addEventListener("click", (e) => {
+    const filterCategory = e.target.getAttribute("data-filter-category");
+    const filterValue = e.target.getAttribute("data-filter");    
+    filterCards(filterCategory, filterValue);
+  });
+});
+
+getCharacters();
+
+document.querySelector(".menu1").addEventListener("click", (e) => {
+  filterCards("species", e.target.getAttribute("data-filter"));
+});
+document.querySelector(".menu2").addEventListener("click", (e) => {
+  filterCards("status", e.target.getAttribute("data-filter"));
+});
+document.querySelector(".menu3").addEventListener("click", (e) => {
+  filterCards("gender", e.target.getAttribute("data-filter"));
+});
 ///////////////////////////////////////////////////////////////////////////////////////
 const renderPagination = (totalPages, currentPage) => {
   let btnTag = "";
@@ -201,14 +232,6 @@ const stickyText = document.getElementById('stickyText');
     })
 ///////////////////////filter/////////////////////
 
-// const filterBtns = document.querySelector(".Humanbtn")
-//   filterBtns.addEventListener('click', async () => {
-//    reset.innerText = "hii"
-//    const aliveRicks = await getCharacters({
-//     status: 'alive'
-//   })
-//   // characterList.innerHTML = 'none'
-//   })
 function showHuman(){
   var ul, li, i;
   ul = document.getElementById(".card-text")
@@ -219,16 +242,3 @@ function showHuman(){
     }
   }
 }
-
-
-
-// function showOnlyAdele() {
-//     var ul, li, i;
-//     ul = document.getElementById("myUL");
-//     li = ul.getElementsByTagName("li");
-//     for (i = li.length - 1; i >= 0; i--) {
-//         if (li[i].textContent.trim() !== "Adele") {
-//             ul.removeChild(li[i]); // Remove list item if it's not "Adele"
-//         }
-//     }
-// }

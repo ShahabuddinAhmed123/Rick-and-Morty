@@ -23,18 +23,20 @@ li {
 .cards-image{
   width:160px;
   border-radius:50%;
-  padding:10px;
   border:2px dashed green;
   
 }
 
-
-
+.character-list li{
+  overflow: hidden;
+  position: relative;
+  transition: all ease 1s;
+  height: 400px;
+}
 .character-list li:hover .cards-image{
   transform: scale(3);
   transition: all ease 1s;
   border: none;
-  margin-top: 0px;
   border-radius: 0%;
   position: relative;
   background-color: lightblue;
@@ -332,6 +334,7 @@ li {
 li img {
   cursor: pointer;
 }
+
 
 .loading-indicator {
   position: absolute;
