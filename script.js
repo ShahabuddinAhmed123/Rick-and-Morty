@@ -37,10 +37,10 @@ const getCharacters = async (page = 1, query = "") => {
         </div>
         <div class = "hover-text">
         <h3>${name}</h3>
-        <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
-        <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
-        <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
-        <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
+        <p><span style="font-size: 18px; color: black">Location:</span> ${location.name}</p>
+        <p><span style="font-size: 18px; color: black">Species:</span> ${species}</p> 
+        <p><span style="font-size: 18px; color: black">Status:</span> ${status}</p>
+        <p><span style="font-size: 18px; color: black">Gender:</span> ${gender}</p>
         </div>
       `;
       characterList.appendChild(listItem);
@@ -156,18 +156,7 @@ dropdowns.forEach(dropdown =>{
 reset.addEventListener('click', () =>{
     location.reload()
 })
-const buttons = document.querySelectorAll(".menu li");
-const cards = document.querySelector(".character-list li")
 
-buttons.forEach((li) =>{
-  li.addEventListener("click", ()=>{
-    li.getAttribute("data-filter");
-
-    cards.forEach((li) => {
-
-    })
-  })
-})
 
 
 const stickyText = document.getElementById('stickyText');
@@ -203,3 +192,12 @@ const stickyText = document.getElementById('stickyText');
        homeBtn.style.backgroundColor = "transparent"
       homeBtn.style.color = "#00609d"
     })
+    
+const dropdownMenus = document.querySelectorAll(".menu");
+const characterListItems = document.querySelectorAll(".character-list li");
+const human = document.getElementById('Human')
+
+human.addEventListener('click', () =>{
+  characterListItems.style.backgroundColor = 'green'
+})
+

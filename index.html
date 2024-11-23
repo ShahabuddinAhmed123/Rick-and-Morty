@@ -23,8 +23,8 @@
           <img src="logo-image.png" alt="">
         </div>
         <div class="navbarBtns">
-          <button id="homeBtn" onclick="home()"git>Home</button>
-          <button id="characterBtn" onclick="character()">Characters</button>
+          <button id="homeBtn" onclick="home()" style="cursor: pointer;">Home</button>
+          <button id="characterBtn" onclick="character()"  style="cursor: pointer;">Characters</button>
         </div>
       </nav>
     <div class="main-page-cntnt" style="display: block;" >
@@ -56,7 +56,7 @@
             <div class="caret"></div>
         </div>
         <ul class="menu menu1">
-            <li onclick="filter()" data-filter="Human">Human</li>
+            <li onclick="filter()" data-filter="Human" id="Human">Human</li>
             <li onclick="filter()" data-filter="Alien">Alien</li>
             <li onclick="filter()" data-filter="Humanoid">Humanoid</li>
             <li onclick="filter()" data-filter="Unknown">Unknown</li>
@@ -120,4 +120,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
