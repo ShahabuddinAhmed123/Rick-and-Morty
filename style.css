@@ -28,13 +28,7 @@ li {
   
 }
 
-.character-list li{
-  overflow: hidden;
-  position: relative;
-  background-color: #85d4ee;
-  transition: all ease 1s;
-  height: 400px;
-}
+
 
 .character-list li:hover .cards-image{
   transform: scale(3);
@@ -612,6 +606,7 @@ p.last-p span {
     color: rgb(248, 75, 104);
   }
 }
+
 
 /****************************************/
 @media screen and (max-width: 1350px) {

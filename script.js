@@ -31,7 +31,7 @@ const getCharacters = async (page = 1, query = "") => {
         </div>
         <div class = "card-text">
         <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
-        <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
+        <p class = "Species"><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
         <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
         </div>
@@ -45,6 +45,11 @@ const getCharacters = async (page = 1, query = "") => {
       `;
       characterList.appendChild(listItem);
       listItem.style.color = "#4f545e";
+      listItem.style.backgroundColor = "#85d4ee";
+      listItem.style.overflow = "hidden"
+      listItem.style.position = "relative"
+      listItem.style.transition = 'all ease 1s'
+      listItem.style.height = '400px'
     });
 
    
@@ -122,6 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
   renderPagination(totalPages, 1);
 });
 
+
 ////////////////////////Button+Dropdown/////////////////////////////
 
 const dropdowns = document.querySelectorAll('.dropdown');
@@ -158,6 +164,7 @@ reset.addEventListener('click', () =>{
 })
 
 
+///////////////////////////////////////////////////////////
 
 const stickyText = document.getElementById('stickyText');
     const offsetTop = stickyText.offsetTop;
@@ -192,12 +199,36 @@ const stickyText = document.getElementById('stickyText');
        homeBtn.style.backgroundColor = "transparent"
       homeBtn.style.color = "#00609d"
     })
-    
-const dropdownMenus = document.querySelectorAll(".menu");
-const characterListItems = document.querySelectorAll(".character-list li");
-const human = document.getElementById('Human')
+///////////////////////filter/////////////////////
 
-human.addEventListener('click', () =>{
-  characterListItems.style.backgroundColor = 'green'
-})
+// const filterBtns = document.querySelector(".Humanbtn")
+//   filterBtns.addEventListener('click', async () => {
+//    reset.innerText = "hii"
+//    const aliveRicks = await getCharacters({
+//     status: 'alive'
+//   })
+//   // characterList.innerHTML = 'none'
+//   })
+function showHuman(){
+  var ul, li, i;
+  ul = document.getElementById(".card-text")
+  li = document.querySelector(".Species")
+  for(i = li.length -1 ; i >= 0; i--){
+    if (li[i].textContent.trim() !== "Human") {
+        ul.removeChild(li[i]);
+    }
+  }
+}
 
+
+
+// function showOnlyAdele() {
+//     var ul, li, i;
+//     ul = document.getElementById("myUL");
+//     li = ul.getElementsByTagName("li");
+//     for (i = li.length - 1; i >= 0; i--) {
+//         if (li[i].textContent.trim() !== "Adele") {
+//             ul.removeChild(li[i]); // Remove list item if it's not "Adele"
+//         }
+//     }
+// }

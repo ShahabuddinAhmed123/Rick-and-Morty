@@ -56,16 +56,16 @@
             <div class="caret"></div>
         </div>
         <ul class="menu menu1">
-            <li onclick="filter()" data-filter="Human" id="Human">Human</li>
-            <li onclick="filter()" data-filter="Alien">Alien</li>
-            <li onclick="filter()" data-filter="Humanoid">Humanoid</li>
-            <li onclick="filter()" data-filter="Unknown">Unknown</li>
-            <li onclick="filter()" data-filter="PoopyButthole">PoopyButthole</li>
-            <li onclick="filter()" data-filter="Mythological Creature">Mythological Creature</li>
-            <li onclick="filter()" data-filter="Animal">Animal</li>
-            <li onclick="filter()" data-filter="Robot">Robot</li>
-            <li onclick="filter()" data-filter="Disease">Disease</li>
-            <li onclick="filter()" data-filter="Cronenberg">Cronenberg</li>
+            <li onclick="showHuman()" data-filter="Human" class="Humanbtn">Human</li>
+            <li onclick="filter(Alien)" data-filter="Alien" class="btns">Alien</li>
+            <li onclick="filter(Humanoid)" data-filter="Humanoid" class="btns">Humanoid</li>
+            <li onclick="filter(Unknown)" data-filter="Unknown" class="btns">Unknown</li>
+            <li onclick="filter(PoopyButthole)" data-filter="PoopyButthole" class="btns">PoopyButthole</li>
+            <li onclick="filter(MythologicalCreature)" data-filter="Mythological Creature" class="btns">Mythological Creature</li>
+            <li onclick="filter(Animal)" data-filter="Animal" class="btns">Animal</li>
+            <li onclick="filter(Robot)" data-filter="Robot" class="btns">Robot</li>
+            <li onclick="filter(Disease)" data-filter="Disease" class="btns">Disease</li>
+            <li onclick="filter(Cronenberg)" data-filter="Cronenberg" class="btns">Cronenberg</li>
         </ul>
     </div>
     <div class="dropdown">
@@ -74,9 +74,9 @@
             <div class="caret"></div>
         </div>
         <ul class="menu menu2">
-            <li onclick="filter()" data-filter="Alive">Alive</li>
-            <li onclick="filter()" data-filter="Unknown">Unknown</li>
-            <li onclick="filter()" data-filter="Dead">Dead</li>
+            <li onclick="filter(Alive)" data-filter="Alive" class="btns">Alive</li>
+            <li onclick="filter(Unknown)" data-filter="Unknown" class="btns">Unknown</li>
+            <li onclick="filter(Dead)" data-filter="Dead" class="btns">Dead</li>
         </ul>
     </div>
     <div class="dropdown">
@@ -85,10 +85,10 @@
             <div class="caret"></div>
         </div>
         <ul class="menu menu3">
-            <li onclick="filter()" data-filter="Male">Male</li>
-            <li onclick="filter()" data-filter="Female">Female</li>
-            <li onclick="filter()" data-filter="Unknown">Unknown</li>
-            <li  onclick="filter()" data-filter="Genderless">Genderless</li>
+            <li onclick="filter(Male)" data-filter="Male" class="btns">Male</li>
+            <li onclick="filter(Female)" data-filter="Female" class="btns">Female</li>
+            <li onclick="filter(Unknown)" data-filter="Unknown" class="btns">Unknown</li>
+            <li  onclick="filter(Genderless)" data-filter="Genderless" class="btns">Genderless</li>
         </ul>
     </div>
     <button id="resetBtn">Reset Filters</button>
