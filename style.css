@@ -21,10 +21,9 @@ li {
 }
 
 .cards-image{
-  width:160px;
+  width:180px;
   border-radius:50%;
   border:2px dashed green;
-  
 }
 
 .character-list li{
@@ -32,12 +31,14 @@ li {
   position: relative;
   transition: all ease 1s;
   height: 400px;
+  box-shadow: 3px 3px 15px #1111118f;
 }
 .character-list li:hover .cards-image{
   transform: scale(3);
   transition: all ease 1s;
   border: none;
   border-radius: 0%;
+  margin-top: 60px;
   position: relative;
   background-color: lightblue;
 }
@@ -167,7 +168,7 @@ h2 {
 .dropdowns-main {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: right;
 }
 .dropdown {
   min-width: 15em;
@@ -189,6 +190,7 @@ h2 {
   transition: background 0.3s;
   font-family: "Creepster", system-ui;
   letter-spacing: 3px;
+  height: 54px;
 }
 .select-clicked {
   border: 2px solid #26489a;
@@ -212,6 +214,31 @@ h2 {
 .caret-rotate {
   transform: rotate(180deg);
 }
+.span{
+  right: -12px;
+  cursor: pointer;
+  top: -11px;
+  z-index: 1;
+  position: absolute;
+  transform: rotate(180deg);
+} 
+.span2{
+  right: -12px;
+  cursor: pointer;
+  top: -11px;
+  z-index: 1;
+  position: absolute;
+}
+.span3{
+  right: -12px;
+  cursor: pointer;
+  top: -11px;
+  z-index: 1;
+  position: absolute;
+}
+/* .RefreshOne{
+  display: inline-block;
+} */
 .menu {
   list-style: none;
   padding: 0.2em 0.5em;
@@ -231,7 +258,7 @@ h2 {
   transform: translate(-50%);
   opacity: 0;
   display: none;
-  z-index: 1;
+  z-index: 1000;
 }
 ::-webkit-scrollbar {
   width: 4px;
@@ -269,6 +296,41 @@ h2 {
   display: block;
   opacity: 1;
 }
+.removeMenu{
+  display: none;
+}
+
+.showMore{
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(137, 137, 252);
+}
+/* .showMoreBtn{
+  width: 170px;
+  height: 57px;
+  background-color: #57a2e5;
+  color: #00609d;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 0.4rem;
+  border-radius: 10px;
+  border-style: none;
+  border: 2px solid #00609d;
+  transition: all ease 0.3s;
+  display: flex;
+  padding: 15px 15px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Creepster", system-ui;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+.showMoreBtn:hover {
+  background-color: rgb(6, 102, 192);
+  color: #9fcbf1;
+} */
 
 #resetBtn {
   width: 170px;
@@ -764,6 +826,30 @@ p.last-p span {
   .search-input{
     gap: 20px;
   }
+  .dropdowns-main{
+    flex-direction: column;
+    width: 100%;
+  }
+  .dropdowns{
+    width: 100%;
+    padding: 30px;
+  }
+  .select{
+    width: 100%;
+  }
+  #resetBtn{
+    width: 100%;
+  }
+  .select{
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 10px;
+  }
+.menu{
+    width: 100%;
+    left: 50%;
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 400px){
@@ -811,7 +897,7 @@ p.last-p span {
   .navImg{
     width: 80px;
     height: 80px;
-    top: 10px;
+    top: 60px;
     left: 10px;
   }
   p.last-p{
@@ -838,12 +924,12 @@ p.last-p span {
     justify-content: flex-start;
   }
   .select{
-    width: 100px;
+    width: 100%;
     font-size: 15px;
     padding: 10px 10px;
   }
 .menu{
-    width: 100px;
+    width: 100%;
     left: 50%;
     font-size: 15px;
   }
@@ -871,4 +957,32 @@ p.last-p span {
     gap: 20px;
     padding: 10px;
   }
+  .cards-image{
+    width: 140px;
+  }
+  .character-list li{
+    margin: auto;
+    width: 250px;
+  }
+  .dropdowns-main{
+    flex-direction: column;
+    width: 100%;
+  }
+  .dropdowns{
+    width: 100%;
+    padding: 30px;
+  }
+  .select{
+    width: 100%;
+  }
+  #resetBtn{
+    width: 100%;
+  }
+  .main-h2{
+    display: none;
+  }
+  .search-input{
+    margin-top: 60px;
+  }
 }
+

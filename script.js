@@ -3,6 +3,7 @@ const searchInput = document.querySelector("input[type='text']");
 const loadingIndicator = document.querySelector(".loading-indicator");
 const ulTag = document.querySelector(".paginationUl");
 let totalPages = 42; 
+const pagination = document.querySelector(".pagination")
 let currentSearchQuery = "";
 
 const getCharacters = async (page = 1, query = "") => {
@@ -24,7 +25,7 @@ const getCharacters = async (page = 1, query = "") => {
 
     characters.forEach(({ image, name, status, species, location, gender }) => {
       const listItem = document.createElement("li");
-        listItem.classList.add("character-item"); 
+        listItem.classList.add("character-item");
       listItem.setAttribute("data-species", species); 
       listItem.setAttribute("data-status", status);
       listItem.setAttribute("data-gender", gender); 
@@ -35,7 +36,7 @@ const getCharacters = async (page = 1, query = "") => {
         </div>
         <div class = "card-text">
         <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
-        <p class = "Species"><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
+        <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
         <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
         </div>
@@ -51,47 +52,223 @@ const getCharacters = async (page = 1, query = "") => {
       listItem.style.color = "#4f545e";
       listItem.style.backgroundColor = "#85d4ee";
     });
-
-   
-
+    
     loadingIndicator.style.display = "none";
   } catch (error) {
     console.error("Error fetching characters:", error);
     loadingIndicator.style.display = "none";
   }
 };
-const filterCards = (category, value) => {
-  const allCards = document.querySelectorAll(".character-item");
-  allCards.forEach(card => {
-    const cardValue = card.getAttribute(`data-${category}`);
-    if (cardValue === value || value === "All") {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
+
+let allCharacters = []; 
+
+const fetchAllCharacters = async () => {
+  allCharacters = []; 
+  loadingIndicator.style.display = "block";
+  try {
+    for (let page = 1; page <= totalPages; page++) {
+      const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+      const api = await fetch(url);
+      const data = await api.json();
+      allCharacters = allCharacters.concat(data.results);
     }
+    loadingIndicator.style.display = "none";
+  } catch (error) {
+    console.error("Error fetching all characters:", error);
+    loadingIndicator.style.display = "none";
+  }
+};
+
+const displayFilteredCharacters = (filterCategory, filterValue) => {
+  const filteredCharacters = allCharacters.filter(
+    (character) => character[filterCategory] === filterValue
+  );
+
+  if (filteredCharacters.length === 0) {
+    characterList.innerHTML = `<p style="text-align: center; color: red;">No characters found for "${filterValue}"</p>`;
+    return;
+  }
+
+  characterList.innerHTML = "";
+  filteredCharacters.forEach(({ image, name, status, species, location, gender }) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("character-item");
+    listItem.innerHTML = `
+      <div class="card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <img src="${image}" class="cards-image"></img> 
+        <h3>${name}</h3>
+      </div>
+       <div class = "card-text">
+        <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
+        <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
+        <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
+        <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
+        </div>
+         <div class = "hover-text">
+        <h3>${name}</h3>
+        <p><span style="font-size: 18px; color: black">Location:</span> ${location.name}</p>
+        <p><span style="font-size: 18px; color: black">Species:</span> ${species}</p> 
+        <p><span style="font-size: 18px; color: black">Status:</span> ${status}</p>
+        <p><span style="font-size: 18px; color: black">Gender:</span> ${gender}</p>
+        </div>
+    `;
+    characterList.appendChild(listItem);
+    listItem.style.backgroundColor = "#85d4ee"
   });
 };
-const dropdownItems = document.querySelectorAll(".dropdown li");
-dropdownItems.forEach(item => {
-  item.addEventListener("click", (e) => {
-    const filterCategory = e.target.getAttribute("data-filter-category");
-    const filterValue = e.target.getAttribute("data-filter");    
-    filterCards(filterCategory, filterValue);
-  });
+
+
+document.querySelector("[data-filter='Human']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Human");     
+    });
+  } else {
+    displayFilteredCharacters("species", "Human");
+  }
+});
+document.querySelector("[data-filter='Alien']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Alien");
+    });
+  } else {
+    displayFilteredCharacters("species", "Alien");
+  }
+});
+document.querySelector("[data-filter='Humanoid']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Humanoid");
+    });
+  } else {
+    displayFilteredCharacters("species", "Humanoid");
+  }
 });
 
-getCharacters();
+document.querySelector("[data-filter='Mythological Creature']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Mythological Creature");
+    });
+  } else {
+    displayFilteredCharacters("species", "Mythological Creature");
+  }
+});
+document.querySelector("[data-filter='Animal']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Animal");
+    });
+  } else {
+    displayFilteredCharacters("species", "Animal");
+  }
+});
+document.querySelector("[data-filter='Robot']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Robot");
+    });
+  } else {
+    displayFilteredCharacters("species", "Robot");
+  }
+});
+document.querySelector("[data-filter='Disease']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Disease");
+    });
+  } else {
+    displayFilteredCharacters("species", "Disease");
+  }
+});
+document.querySelector("[data-filter='Cronenberg']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("species", "Cronenberg");
+    });
+  } else {
+    displayFilteredCharacters("species", "Cronenberg");
+  }
+});
+document.querySelector("[data-filter='Alive']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("status", "Alive");
+    });
+  } else {
+    displayFilteredCharacters("status", "Alive");
+  }
+});
 
-document.querySelector(".menu1").addEventListener("click", (e) => {
-  filterCards("species", e.target.getAttribute("data-filter"));
+document.querySelector("[data-filter='Dead']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("status", "Dead");
+    });
+  } else {
+    displayFilteredCharacters("status", "Dead");
+  }
+  listItem.style.backgroundColor = 'green'
 });
-document.querySelector(".menu2").addEventListener("click", (e) => {
-  filterCards("status", e.target.getAttribute("data-filter"));
+document.querySelector("[data-filter='Male']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("gender", "Male");
+    });
+  } else {
+    displayFilteredCharacters("gender", "Male");
+  }
 });
-document.querySelector(".menu3").addEventListener("click", (e) => {
-  filterCards("gender", e.target.getAttribute("data-filter"));
+document.querySelector("[data-filter='Female']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("gender", "Female");
+    });
+  } else {
+    displayFilteredCharacters("gender", "Female");
+  }
 });
-///////////////////////////////////////////////////////////////////////////////////////
+document.querySelector("[data-filter='Unknown']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("gender", "Unknown");
+    });
+  } else {
+    displayFilteredCharacters("gender", "Unknown");
+  }
+});
+document.querySelector("[data-filter='Genderless']").addEventListener("click", () => {
+  if (allCharacters.length === 0) {
+    fetchAllCharacters().then(() => {
+      displayFilteredCharacters("gender", "Genderless");
+    });
+  } else {
+    displayFilteredCharacters("gender", "Genderless");
+  }
+});
+fetchAllCharacters();
+
+
+
+
+//////////////////////////////////////////////////////////////////
+
+// const showMore = document.querySelector(".showMore")
+// const showMoreBtn = document.querySelector(".showMoreBtn")
+// let  characters = 20;
+// showMoreBtn.addEventListener('click', () => {
+//   for(var i = characters; i > characters + 20; i++){
+//     characterList[i].style.display = 'inline-block'
+//   }
+//   characters += 20;
+//   if(characters >= characterList.length){
+//     showMoreBtn.style.display = none;
+//   }
+// })
+
+
+////////////////////////////////////Pagination///////////////////////////////////////////////////
 const renderPagination = (totalPages, currentPage) => {
   let btnTag = "";
   let beforePages = currentPage - 1;
@@ -166,23 +343,34 @@ const reset = document.getElementById("resetBtn")
 
 dropdowns.forEach(dropdown =>{
     const select = dropdown.querySelector(".select")
-    // const caret = dropdown.querySelector(".caret")
+    const caret = dropdown.querySelector(".caret")
     const menu = dropdown.querySelector(".menu")
     const options = dropdown.querySelectorAll(".menu li")
     const selected = dropdown.querySelector(".selected")
+    const spanText4 = document.querySelector('.span')
+    const spanText2 = document.querySelector('.span2')
+    const spanText3 = document.querySelector('.span3')
+    // const menuOne = document.querySelector('.menu1')
+    // const menuTwo = document.querySelector('.menu2')
+    // const menuThree = document.querySelector('.menu3')
 
     select.addEventListener("click", ()=>{
         select.classList.toggle('select-clicked')
-        // caret.classList.toggle('caret-rotate')
+        // caret.style.display = 'none'
+        // spanText.style.marginTop = '100px'
+        caret.classList.toggle('caret-rotate')
+        spanText4.style.display = 'block'
+        spanText2.style.display = 'block'
+        spanText3.style.display = 'block'
         menu.classList.toggle('menu-open')
+     
     });
     options.forEach(option =>{
         option.addEventListener('click', ()=>{
             selected.innerText = option.innerText;
             select.classList.remove('select-clicked')
-            // caret.classList.remove('caret-rotate')
+            caret.classList.remove('caret-rotate')
             menu.classList.remove('menu-open')
-            
             options.forEach(option =>{
                 option.classList.remove('active')
             });
@@ -190,10 +378,30 @@ dropdowns.forEach(dropdown =>{
         });
     });
 });
-reset.addEventListener('click', () =>{
-    location.reload()
-})
 
+
+const spanText4 = document.querySelector('.span')
+spanText4.addEventListener('click', () =>{
+  location.reload()
+})
+const spanText2 = document.querySelector('.span2')
+spanText2.addEventListener('click', () =>{
+  location.reload()
+})
+const spanText3 = document.querySelector('.span3')
+spanText3.addEventListener('click', () =>{
+  location.reload()
+})
+reset.addEventListener('click', () =>{
+  location.reload()
+})
+// spann.addEventListener('click', () =>{
+//   location.reload()
+// })
+// const selectedd = document.querySelector('.menu1')
+// selectedd.addEventListener('click', () =>{
+//   location.reload()
+// })
 
 ///////////////////////////////////////////////////////////
 
@@ -232,13 +440,33 @@ const stickyText = document.getElementById('stickyText');
     })
 ///////////////////////filter/////////////////////
 
-function showHuman(){
-  var ul, li, i;
-  ul = document.getElementById(".card-text")
-  li = document.querySelector(".Species")
-  for(i = li.length -1 ; i >= 0; i--){
-    if (li[i].textContent.trim() !== "Human") {
-        ul.removeChild(li[i]);
-    }
-  }
-}
+// const filterCards = (category, value) => {
+//   const allCards = document.querySelectorAll(".character-item");
+//   allCards.forEach(card => {
+//     const cardValue = card.getAttribute(`data-${category}`);
+//     if (cardValue === value || value === " ") {
+//       card.style.display = "block";
+//     } else {
+//       card.style.display = "none";
+//     }
+//   });
+// };
+// const dropdownItems = document.querySelectorAll(".dropdown li");
+// dropdownItems.forEach(item => {
+//   item.addEventListener("click", (e) => {
+//     const filterCategory = e.target.getAttribute("data-filter-category");
+//     const filterValue = e.target.getAttribute("data-filter");
+//     filterCards(filterCategory, filterValue);
+//   });
+// });
+// getCharacters();
+
+// document.querySelector(".menu1").addEventListener("click", (e) => {
+//   filterCards("species", e.target.getAttribute("data-filter"));
+// });
+// document.querySelector(".menu2").addEventListener("click", (e) => {
+//   filterCards("status", e.target.getAttribute("data-filter"));
+// });
+// document.querySelector(".menu3").addEventListener("click", (e) => {
+//   filterCards("gender", e.target.getAttribute("data-filter"));
+// });
