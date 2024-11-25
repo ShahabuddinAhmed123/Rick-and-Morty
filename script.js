@@ -337,6 +337,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 ////////////////////////Button+Dropdown/////////////////////////////
+const paginationCntnt = document.querySelector
 
 const dropdowns = document.querySelectorAll('.dropdown');
 const reset = document.getElementById("resetBtn")
@@ -363,7 +364,7 @@ dropdowns.forEach(dropdown =>{
         spanText2.style.display = 'block'
         spanText3.style.display = 'block'
         menu.classList.toggle('menu-open')
-     
+        pagination.style.display = "none"
     });
     options.forEach(option =>{
         option.addEventListener('click', ()=>{
@@ -415,6 +416,8 @@ const stickyText = document.getElementById('stickyText');
         stickyText.classList.remove('sticky', 'change-color');
       }
     });
+
+
 
     const homeBtn = document.getElementById("homeBtn")
     const charBtn = document.getElementById("characterBtn")
