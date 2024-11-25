@@ -575,6 +575,7 @@ nav {
   top: 20px;
   left: 20px;
   box-shadow: 3px 3px 15px #1111118f;
+  cursor: pointer;
 }
 .navImg img {
   width: 100%;
@@ -618,7 +619,7 @@ nav {
 @keyframes heart {
   to {
     transform: scale(1.05);
-    color: #57a2e5;
+    color: rgba(26, 26, 230, 0.281);
   }
 }
 

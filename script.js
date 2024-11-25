@@ -418,7 +418,6 @@ const stickyText = document.getElementById('stickyText');
     });
 
 
-
     const homeBtn = document.getElementById("homeBtn")
     const charBtn = document.getElementById("characterBtn")
     var home = document.querySelector(".main-page-cntnt")
@@ -440,6 +439,16 @@ const stickyText = document.getElementById('stickyText');
       charBtn.style.color = "white"
        homeBtn.style.backgroundColor = "transparent"
       homeBtn.style.color = "#00609d"
+    })
+
+    const navImage = document.querySelector('.navImg')
+    navImage.addEventListener('click', () =>{
+      home.style.display = "block"
+      character.style.display = "none"
+      charBtn.style.backgroundColor = "transparent"
+      charBtn.style.color = "#00609d"
+       homeBtn.style.backgroundColor = "#3dc5f1"
+      homeBtn.style.color = "white"
     })
 ///////////////////////filter/////////////////////
 
