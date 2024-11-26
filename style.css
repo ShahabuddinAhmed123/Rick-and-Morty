@@ -135,8 +135,6 @@ ul.character-list {
   color: white;
 }
 
-
-
 body h2 {
   font-size: 50px;
   font-weight: 500;
@@ -144,7 +142,7 @@ body h2 {
   color: #00609d;
   position: sticky;
   top: 0px;
-  z-index: 1000;
+  z-index: 2000;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 body h2.change-color {
