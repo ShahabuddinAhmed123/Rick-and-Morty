@@ -197,7 +197,28 @@ input::placeholder {
   font-family: "Creepster", system-ui;
   font-size: 20px;
 }
-
+.inputBtn{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+.inputBtn button{
+  width: 80px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: #57a2e5;
+  border:2px solid #00609d;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  font-size: 18px;
+}
+.inputBtn button:hover{
+  color: white;
+  background: #00609d;
+  border:2px solid #00609d;
+}
 h2 {
   text-align: center;
   margin-bottom: 1rem;
@@ -458,7 +479,7 @@ span {
   color: #9fcbf1;
 }
 .page-arrow {
-  width: 60px;
+  width: 40px;
   height: 30px;
   border-radius: 10px;
   background-color: rgb(43, 189, 226);
@@ -467,7 +488,8 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
+  font-weight: 800;
 }
 .page-arrow:hover {
   background-color: rgb(105, 104, 104);
@@ -742,6 +764,7 @@ p.last-p span {
     padding: 0px 20px;
     margin: auto 0px auto 0px;
     height: 350px;
+    text-align: center;
   }
   .front-h1{
     font-size: 60px;
@@ -837,6 +860,7 @@ p.last-p span {
   }
   #resetBtn{
     width: 100%;
+    margin: 4px;
   }
   .select{
     width: 100%;
@@ -869,12 +893,13 @@ p.last-p span {
     margin-top: 0;
   }
   .character-list li{
-    padding: 0px 15px;
-    height: 350px;
+    padding: 10px 10px;
+    height: 380px;
   }
   .front-items{
     height: 300px;
     padding: 0px 20px;
+    text-align: center;
   }
   .front-h1{
     font-size: 40px;
@@ -883,29 +908,38 @@ p.last-p span {
     font-size: 20px;
   }
   .front-h2{
-    font-size: 18px;
+    font-size: 16px;
   }
   .front-h3{
-    font-size: 18px;
+    font-size: 16px;
   }
   .front-h3 span{
-    font-size: 20px;
+    font-size: 18px;
   }
   #homeBtn{
-    font-size: 18px;
-    width: 75px;
+    font-size: 16px;
+    width: 70px;
     height: 40px;
   }
   #characterBtn{
-    font-size: 18px;
-    width: 120px;
+    font-size: 16px;
+    width: 110px;
     height: 40px;
   }
+  nav{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .navImg{
-    width: 80px;
-    height: 80px;
-    top: 60px;
-    left: 10px;
+    width: 70px;
+    height: 70px;
+    top: 05px;
+    left: 05px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
   p.last-p{
     font-size: 12px;
@@ -947,12 +981,12 @@ p.last-p span {
     align-items: center;
     justify-content: center;
   }
-  #resetBtn{
+  /* #resetBtn{
     width: 130px;
     padding: 0px 06px;
     font-size: 12px;
     height: 46px;
-  }
+  } */
   input{
     font-size: 13px;
     width: 50%;
@@ -967,9 +1001,11 @@ p.last-p span {
   .cardsImage{
     width: 140px;
   }
-  .character-list li{
-    margin: auto;
-    width: 250px;
+  .character-list li:hover{
+    transform: scale(1);
+  }
+  .character-list li:hover .cardsImage{
+    transform: scale(3);
   }
   .dropdowns-main{
     flex-direction: column;
@@ -994,12 +1030,10 @@ p.last-p span {
   }
   #resetBtn{
     width: 100%;
+    margin: 4px;
   }
   .main-h2{
-    display: none;
-  }
-  .search-input{
-    margin-top: 60px;
+    font-size: 18px;
   }
 }
 

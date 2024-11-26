@@ -276,7 +276,7 @@ const renderPagination = (totalPages, currentPage) => {
   let activebtn;
 
   if (currentPage > 1) {
-    btnTag += `<button class="page-arrow" onclick="changePage(${currentPage - 1})">prev</button>`;
+    btnTag += `<button class="page-arrow" onclick="changePage(${currentPage - 1})">&#10216;</button>`;
   }
   if (currentPage > 2) {
     btnTag += `<button class="numb" onclick="changePage(1)">1</button>`;
@@ -312,7 +312,7 @@ const renderPagination = (totalPages, currentPage) => {
   }
 
   if (currentPage < totalPages) {
-    btnTag += `<button class="page-arrow" onclick="changePage(${currentPage + 1})">next</button>`;
+    btnTag += `<button class="page-arrow" onclick="changePage(${currentPage + 1})">&#10217;</button>`;
   }
 
   ulTag.innerHTML = btnTag;
@@ -334,7 +334,10 @@ window.addEventListener("DOMContentLoaded", () => {
   getCharacters(1);
   renderPagination(totalPages, 1);
 });
-
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  searchInput.value = "";
+  getCharacters()
+});
 
 ////////////////////////Button+Dropdown/////////////////////////////
 const paginationCntnt = document.querySelector
@@ -365,7 +368,7 @@ dropdowns.forEach(dropdown =>{
         spanText3.style.display = 'block'
         menu.classList.toggle('menu-open')
         pagination.style.display = "none"
-    });
+    }); 
     options.forEach(option =>{
         option.addEventListener('click', ()=>{
             selected.innerText = option.innerText;
@@ -376,26 +379,40 @@ dropdowns.forEach(dropdown =>{
                 option.classList.remove('active')
             });
             option.classList.add('active')
+            spanText4.style.display = 'none'
+            spanText2.style.display = "none"
+            spanText3.style.display = 'none'
         });
+        // const mainPg = document.querySelector('.main-page')
+        // const homePg = document.querySelector('.home-page')
+        if(select.classList.toggle('select-clicked')){
+          reset.addEventListener('click', ()=>{
+            getCharacters()
+            pagination.style.display = "block"
+            spanText4.style.display = 'none'
+            spanText2.style.display = "none"
+            spanText3.style.display = 'none'
+          });
+        }
     });
 });
 
-
 const spanText4 = document.querySelector('.span')
 spanText4.addEventListener('click', () =>{
-  location.reload()
+  getCharacters()
 })
 const spanText2 = document.querySelector('.span2')
 spanText2.addEventListener('click', () =>{
-  location.reload()
+  getCharacters()
 })
 const spanText3 = document.querySelector('.span3')
 spanText3.addEventListener('click', () =>{
-  location.reload()
+  getCharacters()
 })
-reset.addEventListener('click', () =>{
-  location.reload()
-})
+// reset.addEventListener('click', () =>{
+//   location.reload()
+// })
+
 // spann.addEventListener('click', () =>{
 //   location.reload()
 // })
