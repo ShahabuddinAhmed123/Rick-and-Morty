@@ -31,10 +31,10 @@ const getCharacters = async (page = 1, query = "") => {
       listItem.setAttribute("data-gender", gender); 
       listItem.innerHTML = `
         <div class = "card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-          <img src="${image}" class = "cards-image"></img> 
+          <img src="${image}" class = "cardsImage" onmouseover="bigImg(this)" onmouseout="normalImg(this)"></img> 
           <h3>${name}</h3>
         </div>
-        <div class = "card-text">
+        <div class = "card-text"> 
         <p><span style="font-size: 18px; color: #4800bcb9">Location:</span> ${location.name}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Species:</span> ${species}</p> 
         <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
@@ -60,6 +60,7 @@ const getCharacters = async (page = 1, query = "") => {
   }
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////
 let allCharacters = []; 
 
 const fetchAllCharacters = async () => {
@@ -95,7 +96,7 @@ const displayFilteredCharacters = (filterCategory, filterValue) => {
     listItem.classList.add("character-item");
     listItem.innerHTML = `
       <div class="card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <img src="${image}" class="cards-image"></img> 
+        <img src="${image}" class="cardsImage"></img> 
         <h3>${name}</h3>
       </div>
        <div class = "card-text">
@@ -104,7 +105,7 @@ const displayFilteredCharacters = (filterCategory, filterValue) => {
         <p><span style="font-size: 18px; color: #4800bcb9">Status:</span> ${status}</p>
         <p><span style="font-size: 18px; color: #4800bcb9">Gender:</span> ${gender}</p>
         </div>
-         <div class = "hover-text">
+         <div class = "hover-text" >
         <h3>${name}</h3>
         <p><span style="font-size: 18px; color: black">Location:</span> ${location.name}</p>
         <p><span style="font-size: 18px; color: black">Species:</span> ${species}</p> 
@@ -116,7 +117,6 @@ const displayFilteredCharacters = (filterCategory, filterValue) => {
     listItem.style.backgroundColor = "#85d4ee"
   });
 };
-
 
 document.querySelector("[data-filter='Human']").addEventListener("click", () => {
   if (allCharacters.length === 0) {
