@@ -30,8 +30,8 @@ const getCharacters = async (page = 1, query = "") => {
       listItem.setAttribute("data-status", status);
       listItem.setAttribute("data-gender", gender); 
       listItem.innerHTML = `
-        <div class = "card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-          <img src="${image}" class = "cardsImage" onmouseover="bigImg(this)" onmouseout="normalImg(this)"></img> 
+        <div class = "card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: auto;">
+          <img src="${image}" class = "cardsImage" onclick="myFunction()"></img> 
           <h3>${name}</h3>
         </div>
         <div class = "card-text"> 
@@ -96,7 +96,7 @@ const displayFilteredCharacters = (filterCategory, filterValue) => {
     listItem.classList.add("character-item");
     listItem.innerHTML = `
       <div class="card-image-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <img src="${image}" class="cardsImage"></img> 
+        <img src="${image}" class="cardsImage" onclick="myFunction()"></img> 
         <h3>${name}</h3>
       </div>
        <div class = "card-text">
@@ -125,6 +125,7 @@ document.querySelector("[data-filter='Human']").addEventListener("click", () => 
     });
   } else {
     displayFilteredCharacters("species", "Human");
+
   }
 });
 document.querySelector("[data-filter='Alien']").addEventListener("click", () => {
@@ -373,7 +374,6 @@ dropdowns.forEach((dropdown, index) => {
     });
 });
 
-
 resetBtn.addEventListener('click', () => {
     dropdowns.forEach((dropdown, index) => {
         const selected = dropdown.querySelector('.selected');
@@ -462,6 +462,14 @@ const stickyText = document.getElementById('stickyText');
        homeBtn.style.backgroundColor = "#3dc5f1"
       homeBtn.style.color = "white"
     })
+
+/////////////////////////////////////////////////////////////////////////////////////
+listItems = document.querySelectorAll('.character-list li:hover')
+const cardsImage = document.querySelector('.cardsImage')
+function myFunction(){
+  listItem.style.transform = 'scale(1)'
+}
+
 /////////////////////////////////////////Scroll Reveal////////////////////////////////
 
 ScrollReveal({
