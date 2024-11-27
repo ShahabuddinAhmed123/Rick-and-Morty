@@ -330,6 +330,8 @@ searchInput.addEventListener("input", handleSearch);
 window.addEventListener("DOMContentLoaded", () => {
   getCharacters(1);
   renderPagination(totalPages, 1);
+  // pagination.style.display = 'none'
+
 });
 document.getElementById('clearBtn').addEventListener('click', ()=>{
   searchInput.value = "";

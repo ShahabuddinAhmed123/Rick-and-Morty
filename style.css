@@ -493,7 +493,7 @@ span {
   color: #9fcbf1;
 }
 .page-arrow {
-  width: 40px;
+  width: 30px;
   height: 30px;
   border-radius: 10px;
   background-color: rgb(43, 189, 226);
@@ -504,6 +504,8 @@ span {
   justify-content: center;
   color: black;
   font-weight: 800;
+  padding: 0px 0px 5px 0px;
+
 }
 .page-arrow:hover {
   background-color: rgb(105, 104, 104);
