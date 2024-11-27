@@ -353,12 +353,15 @@ dropdowns.forEach((dropdown, index) => {
     const menu = dropdown.querySelector('.menu');
     const options = dropdown.querySelectorAll('.menu li');
     const spanClose = dropdown.querySelector('.span, .span2, .span3');
-
+    const spanRemove = dropdown.querySelector('.optionSpan1, .optionSpan2, .optionSpan3')
+    const spanRemoveOne = document.querySelector('.optionSpan1')
+    const spanRemoveTwo = document.querySelector('.optionSpan2')
+    const spanRemoveThree = document.querySelector('.optionSpan3')
     select.addEventListener('click', () => {
         select.classList.toggle('select-clicked');
         caret.classList.toggle('caret-rotate');
         menu.classList.toggle('menu-open');
-        if (spanClose) spanClose.style.display = 'block';
+        // if (spanClose) spanClose.style.display = 'block';
     });
 
     options.forEach(option => {
@@ -370,6 +373,7 @@ dropdowns.forEach((dropdown, index) => {
             options.forEach(opt => opt.classList.remove('active'));
             option.classList.add('active');
             if (spanClose) spanClose.style.display = 'none';
+            if (spanRemove) spanRemove.style.display = 'block'
         });
     });
 });
@@ -379,6 +383,7 @@ resetBtn.addEventListener('click', () => {
         const selected = dropdown.querySelector('.selected');
         const options = dropdown.querySelectorAll('.menu li');
         const spanClose = dropdown.querySelector('.span, .span2, .span3');
+        const spanRemove = dropdown.querySelector('.optionSpan1, .optionSpan2, .optionSpan3')
 
         if (index === 0) {
             selected.innerText = defaultText.species;
@@ -393,6 +398,7 @@ resetBtn.addEventListener('click', () => {
         });
 
         if (spanClose) spanClose.style.display = 'none';
+        if(spanRemove) spanRemove.style.display = 'none';
     });
 
     const pagination = document.querySelector('.pagination');
@@ -415,6 +421,83 @@ spanText3.addEventListener('click', () =>{
   getCharacters()
   spanText3.innerText = ''
 })
+/////////////////////////////////////////////////////////////////////////////////
+
+const spanRemoveOne = document.querySelector('.optionSpan1')
+const spanRemoveTwo = document.querySelector('.optionSpan2')
+const spanRemoveThree = document.querySelector('.optionSpan3')
+const selected = document.querySelector('.selected');
+
+spanRemoveOne.addEventListener('click', () => {
+  dropdowns.forEach((dropdown, index) => {
+      const selected = dropdown.querySelector('.selected');
+      const options = dropdown.querySelectorAll('.menu li');
+
+      if (index === 0) {
+          selected.innerText = defaultText.species;
+        }
+
+      options.forEach(option => {
+        option.classList.remove('active')
+      });
+
+      spanRemoveOne.style.display = 'none';
+  });
+
+  const pagination = document.querySelector('.pagination');
+  if (pagination) pagination.style.display = 'block';
+  getCharacters(1)
+});
+
+spanRemoveTwo.addEventListener('click', () => {
+  dropdowns.forEach((dropdown, index) => {
+      const selected = dropdown.querySelector('.selected');
+      const options = dropdown.querySelectorAll('.menu li');
+
+      if (index === 1) {
+          selected.innerText = defaultText.status;
+      }
+
+      options.forEach(option => {
+        option.classList.remove('active')
+      });
+
+      spanRemoveTwo.style.display = 'none';
+  });
+
+  const pagination = document.querySelector('.pagination');
+  if (pagination) pagination.style.display = 'block';
+  getCharacters(1)
+});
+
+spanRemoveThree.addEventListener('click', () => {
+  dropdowns.forEach((dropdown, index) => {
+      const selected = dropdown.querySelector('.selected');
+      const options = dropdown.querySelectorAll('.menu li');
+
+      if (index === 2) {
+          selected.innerText = defaultText.gender;
+        }
+
+      options.forEach(option => {
+        option.classList.remove('active')
+      });
+
+      spanRemoveThree.style.display = 'none';
+  });
+
+  const pagination = document.querySelector('.pagination');
+  if (pagination) pagination.style.display = 'block';
+  getCharacters(1)
+});
+
+
+// const optionSpanOne = document.querySelector('.optionSpan1')
+// optionSpanOne.addEventListener('click', ()=>{
+//   optionSpanOne.innerText = ''
+// })
+
+
 
 ///////////////////////////////////////////////////////////
 
