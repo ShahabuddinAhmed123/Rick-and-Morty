@@ -739,9 +739,7 @@ p.last-p span {
   }
   body h2{
     font-size: 28px;
-    top: 10px;
-    position: relative;
-    z-index: 0;
+    top: 20px;
   }
   .search-input{
     padding: 0px 20px;
@@ -803,9 +801,7 @@ p.last-p span {
   }
   body h2{
     font-size: 20px;
-    top: 10px;
-    position: relative;
-    z-index: 0;
+    top: 25px;
     margin-top: 30px;
   }
   .search-input{
@@ -949,9 +945,7 @@ p.last-p span {
   }
   body h2{
     font-size: 20px;
-    top: 10px;
-    position: relative;
-    z-index: 0;
+    top: 20px;
     margin-top: 30px;
     margin: 20px 10px;
   }
@@ -1034,6 +1028,10 @@ p.last-p span {
   }
   .main-h2{
     font-size: 18px;
+  }
+  .inputBtn button{
+    width: 60px;
+    font-size: 15px;
   }
 }
 

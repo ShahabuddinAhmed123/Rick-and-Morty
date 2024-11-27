@@ -248,10 +248,6 @@ document.querySelector("[data-filter='Genderless']").addEventListener("click", (
   }
 });
 fetchAllCharacters();
-
-
-
-
 //////////////////////////////////////////////////////////////////
 
 // const showMore = document.querySelector(".showMore")
@@ -340,86 +336,85 @@ document.getElementById('clearBtn').addEventListener('click', ()=>{
 });
 
 ////////////////////////Button+Dropdown/////////////////////////////
-const paginationCntnt = document.querySelector
-
 const dropdowns = document.querySelectorAll('.dropdown');
-const reset = document.getElementById("resetBtn")
+const resetBtn = document.getElementById('resetBtn');
 
-dropdowns.forEach(dropdown =>{
-    const select = dropdown.querySelector(".select")
-    const caret = dropdown.querySelector(".caret")
-    const menu = dropdown.querySelector(".menu")
-    const options = dropdown.querySelectorAll(".menu li")
-    const selected = dropdown.querySelector(".selected")
-    const spanText4 = document.querySelector('.span')
-    const spanText2 = document.querySelector('.span2')
-    const spanText3 = document.querySelector('.span3')
-    // const menuOne = document.querySelector('.menu1')
-    // const menuTwo = document.querySelector('.menu2')
-    // const menuThree = document.querySelector('.menu3')
+const defaultText = {
+    species: "Species",
+    status: "Status",
+    gender: "Gender",
+};
 
-    select.addEventListener("click", ()=>{
-        select.classList.toggle('select-clicked')
-        // caret.style.display = 'none'
-        // spanText.style.marginTop = '100px'
-        caret.classList.toggle('caret-rotate')
-        spanText4.style.display = 'block'
-        spanText2.style.display = 'block'
-        spanText3.style.display = 'block'
-        menu.classList.toggle('menu-open')
-        pagination.style.display = "none"
-    }); 
-    options.forEach(option =>{
-        option.addEventListener('click', ()=>{
-            selected.innerText = option.innerText;
-            select.classList.remove('select-clicked')
-            caret.classList.remove('caret-rotate')
-            menu.classList.remove('menu-open')
-            options.forEach(option =>{
-                option.classList.remove('active')
-            });
-            option.classList.add('active')
-            spanText4.style.display = 'none'
-            spanText2.style.display = "none"
-            spanText3.style.display = 'none'
-        });
-        // const mainPg = document.querySelector('.main-page')
-        // const homePg = document.querySelector('.home-page')
-        if(select.classList.toggle('select-clicked')){
-          reset.addEventListener('click', ()=>{
-            getCharacters()
-            pagination.style.display = "block"
-            spanText4.style.display = 'none'
-            spanText2.style.display = "none"
-            spanText3.style.display = 'none'
-          });
-        }
+dropdowns.forEach((dropdown, index) => {
+    const select = dropdown.querySelector('.select');
+    const selected = dropdown.querySelector('.selected');
+    const caret = dropdown.querySelector('.caret');
+    const menu = dropdown.querySelector('.menu');
+    const options = dropdown.querySelectorAll('.menu li');
+    const spanClose = dropdown.querySelector('.span, .span2, .span3');
+
+    select.addEventListener('click', () => {
+        select.classList.toggle('select-clicked');
+        caret.classList.toggle('caret-rotate');
+        menu.classList.toggle('menu-open');
+        if (spanClose) spanClose.style.display = 'block';
     });
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            selected.innerText = option.innerText;
+            select.classList.remove('select-clicked');
+            caret.classList.remove('caret-rotate');
+            menu.classList.remove('menu-open');
+            options.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+            if (spanClose) spanClose.style.display = 'none';
+        });
+    });
+});
+
+
+resetBtn.addEventListener('click', () => {
+    dropdowns.forEach((dropdown, index) => {
+        const selected = dropdown.querySelector('.selected');
+        const options = dropdown.querySelectorAll('.menu li');
+        const spanClose = dropdown.querySelector('.span, .span2, .span3');
+
+        if (index === 0) {
+            selected.innerText = defaultText.species;
+        } else if (index === 1) {
+            selected.innerText = defaultText.status;
+        } else if (index === 2) {
+            selected.innerText = defaultText.gender;
+        }
+
+        options.forEach(option => {
+          option.classList.remove('active')
+        });
+
+        if (spanClose) spanClose.style.display = 'none';
+    });
+
+    const pagination = document.querySelector('.pagination');
+    if (pagination) pagination.style.display = 'block';
+    getCharacters()
 });
 
 const spanText4 = document.querySelector('.span')
 spanText4.addEventListener('click', () =>{
   getCharacters()
+  spanText4.innerText = ''
 })
 const spanText2 = document.querySelector('.span2')
 spanText2.addEventListener('click', () =>{
   getCharacters()
+  spanText2.innerText = ''
 })
 const spanText3 = document.querySelector('.span3')
 spanText3.addEventListener('click', () =>{
   getCharacters()
+  spanText3.innerText = ''
 })
-// reset.addEventListener('click', () =>{
-//   location.reload()
-// })
-
-// spann.addEventListener('click', () =>{
-//   location.reload()
-// })
-// const selectedd = document.querySelector('.menu1')
-// selectedd.addEventListener('click', () =>{
-//   location.reload()
-// })
 
 ///////////////////////////////////////////////////////////
 
@@ -467,35 +462,15 @@ const stickyText = document.getElementById('stickyText');
        homeBtn.style.backgroundColor = "#3dc5f1"
       homeBtn.style.color = "white"
     })
-///////////////////////filter/////////////////////
+/////////////////////////////////////////Scroll Reveal////////////////////////////////
 
-// const filterCards = (category, value) => {
-//   const allCards = document.querySelectorAll(".character-item");
-//   allCards.forEach(card => {
-//     const cardValue = card.getAttribute(`data-${category}`);
-//     if (cardValue === value || value === " ") {
-//       card.style.display = "block";
-//     } else {
-//       card.style.display = "none";
-//     }
-//   });
-// };
-// const dropdownItems = document.querySelectorAll(".dropdown li");
-// dropdownItems.forEach(item => {
-//   item.addEventListener("click", (e) => {
-//     const filterCategory = e.target.getAttribute("data-filter-category");
-//     const filterValue = e.target.getAttribute("data-filter");
-//     filterCards(filterCategory, filterValue);
-//   });
-// });
-// getCharacters();
-
-// document.querySelector(".menu1").addEventListener("click", (e) => {
-//   filterCards("species", e.target.getAttribute("data-filter"));
-// });
-// document.querySelector(".menu2").addEventListener("click", (e) => {
-//   filterCards("status", e.target.getAttribute("data-filter"));
-// });
-// document.querySelector(".menu3").addEventListener("click", (e) => {
-//   filterCards("gender", e.target.getAttribute("data-filter"));
-// });
+ScrollReveal({
+   reset: true,
+   distance: '80px',
+   duration: '1000',
+  delay: '00'
+});
+ScrollReveal().reveal('.front-h2', { origin: 'left' });
+ScrollReveal().reveal('.front-h3', { origin: 'right' });
+ScrollReveal().reveal('.navImg', { origin: 'top' });
+ScrollReveal().reveal('.navbarBtns', { origin: 'top' });
