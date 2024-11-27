@@ -354,16 +354,23 @@ dropdowns.forEach((dropdown, index) => {
     const options = dropdown.querySelectorAll('.menu li');
     const spanClose = dropdown.querySelector('.span, .span2, .span3');
     const spanRemove = dropdown.querySelector('.optionSpan1, .optionSpan2, .optionSpan3')
-    const spanRemoveOne = document.querySelector('.optionSpan1')
-    const spanRemoveTwo = document.querySelector('.optionSpan2')
-    const spanRemoveThree = document.querySelector('.optionSpan3')
     select.addEventListener('click', () => {
         select.classList.toggle('select-clicked');
         caret.classList.toggle('caret-rotate');
         menu.classList.toggle('menu-open');
         // if (spanClose) spanClose.style.display = 'block';
+        if (selected.innerText === 'Species'){
+          spanClose.style.display = 'block';
+        } 
+        else if (selected.innerText === 'Gender'){
+          spanClose.style.display = 'block';
+        } 
+        else if (selected.innerText === 'Status'){
+          spanClose.style.display = 'block';
+        } 
     });
 
+ 
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerText = option.innerText;
