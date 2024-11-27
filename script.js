@@ -468,9 +468,9 @@ ScrollReveal({
    reset: true,
    distance: '80px',
    duration: '1000',
-  delay: '00'
+   delay: '200'
 });
 ScrollReveal().reveal('.front-h2', { origin: 'left' });
 ScrollReveal().reveal('.front-h3', { origin: 'right' });
 ScrollReveal().reveal('.navImg', { origin: 'top' });
-ScrollReveal().reveal('.navbarBtns', { origin: 'top' });
+ScrollReveal().reveal('.navbarBtns', { origin: 'right' });

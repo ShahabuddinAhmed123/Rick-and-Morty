@@ -789,10 +789,6 @@ p.last-p span {
     width: 150px;
     height: 50px;
   }
-  .navImg{
-    width: 100px;
-    height: 100px;
-  }
   p.last-p{
     font-size: 15px;
   }
@@ -801,7 +797,9 @@ p.last-p span {
   }
   body h2{
     font-size: 20px;
-    top: 25px;
+    top: 10px;
+    position: relative;
+    z-index: 0;
     margin-top: 30px;
   }
   .search-input{
@@ -877,6 +875,25 @@ p.last-p span {
     left: 50%;
     font-size: 15px;
   }
+  input{
+    background-color: #57a2e5;
+  }
+  .inputBtn{
+    color: #00609d;
+    position: sticky;
+    top: 20px;
+    z-index: 2000;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  .navImg{
+    width: 80px;
+    height: 80px;
+    top: 0px;
+    left: 05px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 @media screen and (max-width: 400px){
@@ -945,7 +962,9 @@ p.last-p span {
   }
   body h2{
     font-size: 20px;
-    top: 20px;
+    top: 10px;
+    position: relative;
+    z-index: 0;
     margin-top: 30px;
     margin: 20px 10px;
   }
@@ -1032,6 +1051,13 @@ p.last-p span {
   .inputBtn button{
     width: 60px;
     font-size: 15px;
+  }
+  .inputBtn{
+    color: #00609d;
+    position: sticky;
+    top: 15px;
+    z-index: 2000;
+    transition: color 0.3s ease, background-color 0.3s ease;
   }
 }
 
