@@ -3,7 +3,7 @@ const searchInput = document.querySelector("input[type='text']");
 const loadingIndicator = document.querySelector(".loading-indicator");
 const ulTag = document.querySelector(".paginationUl");
 let totalPages = 42; 
-let totalPagesOne = 9;
+let totalPagesOne = 6;
 const pagination = document.querySelector(".pagination")
 const paginationOne = document.getElementById('PaginationTwo')
 const ulTagOne = document.querySelector('.PaginationTwoUl')
