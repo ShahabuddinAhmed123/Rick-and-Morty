@@ -5,7 +5,7 @@ const ulTag = document.querySelector(".paginationUl");
 let totalPages = 42; 
 let totalPagesOne = 9;
 const pagination = document.querySelector(".pagination")
-const paginationOne = document.querySelector('.PaginationTwo')
+const paginationOne = document.getElementById('PaginationTwo')
 const ulTagOne = document.querySelector('.PaginationTwoUl')
 let currentSearchQuery = "";
 
@@ -312,7 +312,6 @@ window.addEventListener("DOMContentLoaded", () => {
   renderPaginationTwo(totalPagesOne, 1);
 });
 
-
 ////////////////////////////////////Pagination///////////////////////////////////////////////////
 const renderPagination = (totalPages, currentPage) => {
   let btnTag = "";
@@ -375,7 +374,7 @@ const handleSearch = (event) => {
   getCharacters(1, currentSearchQuery);
   renderPagination(totalPages, 1);
   pagination.style.display = 'none'
-  paginationOne.style.display = 'block'
+  paginationOne.style.display = "block"
 };
 
 searchInput.addEventListener("input", handleSearch);
@@ -387,12 +386,16 @@ document.getElementById('clearBtn').addEventListener('click', ()=>{
   searchInput.value = "";
   getCharacters()
     pagination.style.display = 'block'
+      paginationOne.style.display = 'none'
 });
 if(searchInput.innerHTML = " "){
+  const pagination = document.querySelector('.pagination')
   pagination.style.display = 'block'
+  paginationOne.style.display = "none"
 }
 else{
   pagination.style.display = 'none'
+  paginationOne.style.display = "block"
 }
 
 ////////////////////////Button+Dropdown/////////////////////////////
@@ -417,6 +420,8 @@ dropdowns.forEach((dropdown, index) => {
         select.classList.toggle('select-clicked');
         caret.classList.toggle('caret-rotate');
         menu.classList.toggle('menu-open');
+        pagination.style.display = 'none'
+        paginationOne.style.display = 'none'
         // if (spanClose) spanClose.style.display = 'block';
         if (selected.innerText === 'Species'){
           spanClose.style.display = 'block';
@@ -469,6 +474,7 @@ resetBtn.addEventListener('click', () => {
 
     const pagination = document.querySelector('.pagination');
     if (pagination) pagination.style.display = 'block';
+    if (paginationOne) paginationOne.style.display = 'none';
     getCharacters()
 });
 
@@ -512,6 +518,7 @@ spanRemoveOne.addEventListener('click', () => {
 
   const pagination = document.querySelector('.pagination');
   if (pagination) pagination.style.display = 'block';
+  if (paginationOne) paginationOne.style.display = 'none';
   getCharacters(1)
 });
 
@@ -533,6 +540,7 @@ spanRemoveTwo.addEventListener('click', () => {
 
   const pagination = document.querySelector('.pagination');
   if (pagination) pagination.style.display = 'block';
+  if (paginationOne) paginationOne.style.display = 'none';
   getCharacters(1)
 });
 
@@ -554,6 +562,7 @@ spanRemoveThree.addEventListener('click', () => {
 
   const pagination = document.querySelector('.pagination');
   if (pagination) pagination.style.display = 'block';
+  if (paginationOne) paginationOne.style.display = 'none';
   getCharacters(1)
 });
 
@@ -600,6 +609,7 @@ const stickyText = document.getElementById('stickyText');
       charBtn.style.color = "white"
        homeBtn.style.backgroundColor = "transparent"
       homeBtn.style.color = "#00609d"
+      paginationOne.style.display = "none"
     })
 
     const navImage = document.querySelector('.navImg')
