@@ -546,6 +546,43 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
 } */
+ /***********************************pagination 2****************/
+ .PaginationTwoUl{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  height: 50px;
+  align-items: center;
+  margin: auto;
+ }
+ .pageBtn{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: transparent;
+  border-style: none;
+  box-shadow: 0px 3px 5px #1111118f;
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:all 0.3s ease;
+ }
+ .pageBtn:hover {
+  background-color: #57a2e5;
+  color: white;
+}
+.pageBtn:active {
+  background-color: purple;
+}
+.active {
+  background-color: #00609d;
+  color: #9fcbf1;
+}
 /***********************************main page*******************************/
 
 nav {

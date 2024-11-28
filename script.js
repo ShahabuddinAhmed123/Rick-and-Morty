@@ -3,7 +3,10 @@ const searchInput = document.querySelector("input[type='text']");
 const loadingIndicator = document.querySelector(".loading-indicator");
 const ulTag = document.querySelector(".paginationUl");
 let totalPages = 42; 
+let totalPagesOne = 9;
 const pagination = document.querySelector(".pagination")
+const paginationOne = document.querySelector('.PaginationTwo')
+const ulTagOne = document.querySelector('.PaginationTwoUl')
 let currentSearchQuery = "";
 
 const getCharacters = async (page = 1, query = "") => {
@@ -250,19 +253,64 @@ document.querySelector("[data-filter='Genderless']").addEventListener("click", (
 });
 fetchAllCharacters();
 //////////////////////////////////////////////////////////////////
+const renderPaginationTwo = (totalPagesOne, currentPageOne) => {
+  let btnTagOne = "";
+  let beforePagesOne = currentPageOne - 1;
+  let afterPagesOne = currentPageOne + 1;
+  let activebtnOne;
 
-// const showMore = document.querySelector(".showMore")
-// const showMoreBtn = document.querySelector(".showMoreBtn")
-// let  characters = 20;
-// showMoreBtn.addEventListener('click', () => {
-//   for(var i = characters; i > characters + 20; i++){
-//     characterList[i].style.display = 'inline-block'
-//   }
-//   characters += 20;
-//   if(characters >= characterList.length){
-//     showMoreBtn.style.display = none;
-//   }
-// })
+  if (currentPageOne > 1) {
+    btnTagOne += `<button class="page-arrow" onclick="changePageTwo(${currentPageOne - 1})">&#10216;</button>`;
+  }
+
+  if (currentPageOne > 2) {
+    btnTagOne += `<button class="pageBtn" onclick="changePageTwo(1)">1</button>`;
+    if (currentPageOne > 3) {
+      btnTagOne += `<button class="dots">...</button>`;
+    }
+  }
+
+  if (currentPageOne === totalPagesOne) {
+    beforePagesOne -= 2;
+  } else if (currentPageOne === totalPagesOne - 1) {
+    beforePagesOne -= 1;
+  }
+
+  if (currentPageOne === 1) {
+    afterPagesOne += 2;
+  } else if (currentPageOne === 2) {
+    afterPagesOne += 1;
+  }
+
+  for (let pageLengthOne = beforePagesOne; pageLengthOne <= afterPagesOne; pageLengthOne++) {
+    if (pageLengthOne > totalPagesOne || pageLengthOne < 1) continue;
+
+    activebtnOne = pageLengthOne === currentPageOne ? "active" : "";
+    btnTagOne += `<button class="pageBtn ${activebtnOne}" onclick="changePageTwo(${pageLengthOne})">${pageLengthOne}</button>`;
+  }
+
+  if (currentPageOne < totalPagesOne - 1) {
+    if (currentPageOne < totalPagesOne - 2) {
+      btnTagOne += `<button class="dots">...</button>`;
+    }
+    btnTagOne += `<button class="pageBtn" onclick="changePageTwo(${totalPagesOne})">${totalPagesOne}</button>`;
+  }
+
+  if (currentPageOne < totalPagesOne) {
+    btnTagOne += `<button class="page-arrow" onclick="changePageTwo(${currentPageOne + 1})">&#10217;</button>`;
+  }
+
+  ulTagOne.innerHTML = btnTagOne;
+};
+
+const changePageTwo = (page) => {
+  getCharacters(page, currentSearchQuery);
+  renderPaginationTwo(totalPagesOne, page);
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderPaginationTwo(totalPagesOne, 1);
+});
 
 
 ////////////////////////////////////Pagination///////////////////////////////////////////////////
@@ -311,8 +359,10 @@ const renderPagination = (totalPages, currentPage) => {
   if (currentPage < totalPages) {
     btnTag += `<button class="page-arrow" onclick="changePage(${currentPage + 1})">&#10217;</button>`;
   }
-
   ulTag.innerHTML = btnTag;
+  if(characterList.value == 20){
+    btnTag = ''
+  }
 };
 
 const changePage = (page) => {
@@ -324,19 +374,26 @@ const handleSearch = (event) => {
   currentSearchQuery = event.target.value.trim().toLowerCase();
   getCharacters(1, currentSearchQuery);
   renderPagination(totalPages, 1);
+  pagination.style.display = 'none'
+  paginationOne.style.display = 'block'
 };
 
 searchInput.addEventListener("input", handleSearch);
 window.addEventListener("DOMContentLoaded", () => {
   getCharacters(1);
   renderPagination(totalPages, 1);
-  // pagination.style.display = 'none'
-
 });
 document.getElementById('clearBtn').addEventListener('click', ()=>{
   searchInput.value = "";
   getCharacters()
+    pagination.style.display = 'block'
 });
+if(searchInput.innerHTML = " "){
+  pagination.style.display = 'block'
+}
+else{
+  pagination.style.display = 'none'
+}
 
 ////////////////////////Button+Dropdown/////////////////////////////
 const dropdowns = document.querySelectorAll('.dropdown');
